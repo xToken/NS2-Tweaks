@@ -4,8 +4,10 @@
 
 Script.Load("lua/Class.lua")
 
-//This shouldnt really be done this way, but its an effective test.  With a network message it may not arrive at the same time as the rest of the respawn, causing some unnatural feeling for the client.
-//Probably should be a networked field in the player entity.
+//This shouldnt really be done this way, but its an effective test.  With a network message it may not arrive at the same time as the rest of the respawn, 
+//causing some unnatural feeling for the client.  Probably should be a networked field in the player entity.
+//Really there is probably no reason to set angles on respawn, unless its a specific event - returning to RR, round start to face CC etc.
+//General respawns will have the client updating the view angles on its next frame, making it sorta pointless.  This would require re-working some of the spawn code a bit.
 local kOverrideSpawnAnglesMessage =
 {
     viewYaw         = "angle",
@@ -134,7 +136,7 @@ end
 
 if Client then
 
-	//Pitch is stored client side as +/- 1/2 pi in the 'move'.  'ViewAngles' from model are networked as 0-2pi (ish?)
+	//Pitch is stored client side as +/- 1/2 pi in the 'move'.  'Pitch' from the server is networked as 0-2pi (ish?)
 	function CorrectViewPitch(pitch)
 
 		if pitch > math.pi then
@@ -146,10 +148,8 @@ if Client then
 
 	function OnCommandOverrideSpawnAngles(msg)
 		if msg then
-			msg.viewPitch = CorrectViewPitch(msg.viewPitch)
 			Client.SetYaw(msg.viewYaw)
-            Client.SetPitch(msg.viewPitch)
-			//Print(string.format("Spawning player with yaw/pitch %s/%s.", ToString(msg.viewYaw), ToString(msg.viewPitch)))
+            Client.SetPitch(CorrectViewPitch(msg.viewPitch))
 		end
 	end
 	
@@ -161,7 +161,7 @@ if Client then
 		oldCameraHolderMixinSetViewAngles(self, viewAngles)
 		if kFlashyViewAngleDebugging then
 			if self.printViewAngles == nil or self.printViewAngles < Shared.GetTime() then
-				Print(string.format("Player has yaw/pitch %s/%s.", ToString(self.viewYaw), ToString(self.viewPitch)))
+				Print(string.format("Player has pitch %s.", ToString(self.viewPitch)))
 				local cs = Script.CallStack()
 				if not string.match(cs, "OnProcessIntermediate") then
 					//We reset when OnProcessMove calls this.
