@@ -155,7 +155,7 @@ if Client then
 	
 	Client.HookNetworkMessage("OverrideSpawnAngles", OnCommandOverrideSpawnAngles)
 	
-	local kFlashyViewAngleDebugging = true
+	local kFlashyViewAngleDebugging = false
 	local oldCameraHolderMixinSetViewAngles = CameraHolderMixin.SetViewAngles
 	function CameraHolderMixin:SetViewAngles(viewAngles)
 		oldCameraHolderMixinSetViewAngles(self, viewAngles)
