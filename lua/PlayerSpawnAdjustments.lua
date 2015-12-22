@@ -78,6 +78,7 @@ if Server then
 			// Spawn player on top of IP
 			local spawnOrigin = self:GetAttachPointOrigin("spawn_point")
 			
+			//Marine specs have no model, so no angles.  Need view angles here i guess.
 			local success, player = team:ReplaceRespawnPlayer(queuedPlayer, spawnOrigin, queuedPlayer:GetViewAngles())
 			if success then
 			
