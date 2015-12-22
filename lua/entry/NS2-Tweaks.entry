@@ -1,0 +1,4 @@
+modEntry = [[
+	Shared: lua/PlayerSpawnAdjustments.lua,
+	Priority: 10
+]]
