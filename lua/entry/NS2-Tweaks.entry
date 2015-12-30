@@ -1,4 +1,4 @@
 modEntry = [[
-	Shared: lua/PlayerSpawnAdjustments.lua,
+	Shared: lua/NS2-Tweaks_Shared.lua,
 	Priority: 10
 ]]
