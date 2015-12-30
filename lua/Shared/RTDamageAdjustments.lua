@@ -3,29 +3,33 @@
 // lua\Shared\AlienTechTreeAdjustments.lua
 // - Dragon
 
-//Fix for Harvester's take a couple ticks of damage at round start sometimes.  Infestation updates on a slower HZ, so run one manually here.
-local function CreateCysts(hive, harvester, teamNumber)
+if Server then
 
-	local hiveOrigin = hive:GetOrigin()
-	local harvesterOrigin = harvester:GetOrigin()
-	
-	// Spawn all the Cyst spawn points close to the hive.
-	local dist = (hiveOrigin - harvesterOrigin):GetLength()
-	for c = 1, #Server.cystSpawnPoints do
-	
-		local spawnPoint = Server.cystSpawnPoints[c]
-		if (spawnPoint - hiveOrigin):GetLength() <= (dist * 1.5) then
+	//Fix for Harvester's take a couple ticks of damage at round start sometimes.  Infestation updates on a slower HZ, so run one manually here.
+	local function CreateCysts(hive, harvester, teamNumber)
+
+		local hiveOrigin = hive:GetOrigin()
+		local harvesterOrigin = harvester:GetOrigin()
 		
-			local cyst = CreateEntityForTeam(kTechId.Cyst, spawnPoint, teamNumber, nil)
-			cyst:SetConstructionComplete()
-			cyst:SetInfestationFullyGrown()
-			cyst:SetImmuneToRedeploymentTime(1)
-			cyst:UpdateInfestation()
+		// Spawn all the Cyst spawn points close to the hive.
+		local dist = (hiveOrigin - harvesterOrigin):GetLength()
+		for c = 1, #Server.cystSpawnPoints do
+		
+			local spawnPoint = Server.cystSpawnPoints[c]
+			if (spawnPoint - hiveOrigin):GetLength() <= (dist * 1.5) then
+			
+				local cyst = CreateEntityForTeam(kTechId.Cyst, spawnPoint, teamNumber, nil)
+				cyst:SetConstructionComplete()
+				cyst:SetInfestationFullyGrown()
+				cyst:SetImmuneToRedeploymentTime(1)
+				cyst:UpdateInfestation()
+				
+			end
 			
 		end
 		
 	end
+
+	ReplaceLocals(AlienTeam.SpawnInitialStructures, { CreateCysts = CreateCysts })
 	
 end
-
-ReplaceLocals(AlienTeam.SpawnInitialStructures, { CreateCysts = CreateCysts })
