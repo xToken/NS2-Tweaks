@@ -7,15 +7,13 @@
 local originalMarineGetCanUseCatPack
 originalMarineGetCanUseCatPack = Class_ReplaceMethod("Marine", "GetCanUseCatPack",
 	function(self)
-		local enoughTimePassed = self.timeCatpackboost + kCatPackCooldown < Shared.GetTime()
-		return not self.catpackboost and enoughTimePassed
+		return not self.catpackboost
 	end
 )
 
 local originalExoGetCanUseCatPack
 originalExoGetCanUseCatPack = Class_ReplaceMethod("Exo", "GetCanUseCatPack",
 	function(self)
-		local enoughTimePassed = self.timeCatpackboost + kCatPackCooldown < Shared.GetTime()
-		return not self.catpackboost and enoughTimePassed
+		return not self.catpackboost
 	end
 )
