@@ -1,6 +1,6 @@
 // Natural Selection 2 'Tweaks' Mod
 // Source located at - https://github.com/xToken/NS2-Tweaks
-// lua\CompMod\Client\MarineGunDebugging.lua
+// lua\Shared\MarineGunDebugging.lua
 // - Dragon
 
 if Client then
