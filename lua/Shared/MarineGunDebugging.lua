@@ -3,7 +3,7 @@
 // lua\Shared\MarineGunDebugging.lua
 // - Dragon
 
-if Client then
+/*if Client then
 
 	local kRifleAttackFailures = { }
 	local kMaxAttackLogs = 10
@@ -74,4 +74,4 @@ if Client then
 
 	Event.Hook("Console_debugrifle", DisplayRifleFailures)
 
-end
+end*/

@@ -28,6 +28,7 @@ function Builder:OnUpdateAnimationInput(modelMixin)
     
 end
 
+/*
 //Hacky fix for reload bugs.
 local kRifleReloadWindow = 1.5
 local kRifleCatalystReloadWindow = 1
@@ -69,3 +70,4 @@ function Rifle:OnReload(player)
     end
     
 end
+*/
