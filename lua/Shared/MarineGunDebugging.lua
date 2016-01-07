@@ -1,9 +1,9 @@
 // Natural Selection 2 'Tweaks' Mod
 // Source located at - https://github.com/xToken/NS2-Tweaks
-// lua\CompMod\Client\MarineGunDebugging.lua
+// lua\Shared\MarineGunDebugging.lua
 // - Dragon
 
-if Client then
+/*if Client then
 
 	local kRifleAttackFailures = { }
 	local kMaxAttackLogs = 10
@@ -74,4 +74,4 @@ if Client then
 
 	Event.Hook("Console_debugrifle", DisplayRifleFailures)
 
-end
+end*/
