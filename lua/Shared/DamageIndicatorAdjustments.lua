@@ -24,8 +24,6 @@ if Server then
 				self.lastTakenDamageOrigin = doer:GetParent():GetOrigin()
 			elseif doer and doer.GetOrigin then
 				self.lastTakenDamageOrigin = doer:GetOrigin()
-			elseif attacker and attacker:GetOrigin() then
-				self.lastTakenDamageOrigin = doer:GetOrigin()
 			else
 				//Last hope, use our origin.. just to prevent assert
 				self.lastTakenDamageOrigin = self:GetOrigin()
