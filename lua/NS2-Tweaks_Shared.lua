@@ -14,6 +14,3 @@ Shared.GetMatchingFileNames( "lua/Shared/*.lua", true, MainFiles )
 for i = 1, #MainFiles do
 	Script.Load(MainFiles[i])
 end
-
-//JIC
-Script.Load("lua/Predict/PredictAdjustments.lua")

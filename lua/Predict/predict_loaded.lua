@@ -4,4 +4,5 @@
 // - Dragon
 
 Script.Load( "lua/Class.lua" )
+Script.Load("lua/Predict/PredictAdjustments.lua")
 OnPredictVMLoadComplete()
