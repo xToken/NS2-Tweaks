@@ -7,6 +7,7 @@ Script.Load("lua/ScriptActor.lua")
 Script.Load("lua/Mixins/ClientModelMixin.lua")
 Script.Load("lua/PathingMixin.lua")
 Script.Load("lua/MapBlipMixin.lua")
+Script.Load("lua/Shared/PredictAdjustments.lua")
 
 class 'Door' (ScriptActor)
 
@@ -265,6 +266,10 @@ if not Server then
 		
 	end
 	
+end
+
+if Predict then
+	AddClassToPredictionUpdate("Door", function(ent) return true end, kUpdateAutoOpenRate)
 end
 
 Shared.LinkClassToMap("Door", Door.kMapName, networkVars)
