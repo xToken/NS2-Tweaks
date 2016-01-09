@@ -7,7 +7,7 @@ Script.Load("lua/ScriptActor.lua")
 Script.Load("lua/Mixins/ClientModelMixin.lua")
 Script.Load("lua/PathingMixin.lua")
 Script.Load("lua/MapBlipMixin.lua")
-Script.Load("lua/Shared/PredictAdjustments.lua")
+Script.Load("lua/Predict/PredictAdjustments.lua")
 
 class 'Door' (ScriptActor)
 
