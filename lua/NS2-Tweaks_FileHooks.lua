@@ -5,4 +5,9 @@
 
 //Filehooks
 //Add in manually.
-ModLoader.SetupFileHook( "lua/Door.lua", "lua/Replace/DoorAdjustments.lua", "replace" )
+//Better Doors
+ModLoader.SetupFileHook( "lua/Door.lua", "lua/Replace/Door.lua", "replace" )
+//Predict Collision fixes 'lib' needs to know when Predict VM is fully loaded.  No such callback exists afaik.
+if Predict then
+	ModLoader.SetupFileHook( "lua/PostLoadMod.lua", "lua/Predict/predict_loaded.lua", "post" )
+end
