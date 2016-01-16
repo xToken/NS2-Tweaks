@@ -261,9 +261,7 @@ if not Server then
 		ScriptActor.OnUpdate(self, deltaTime)
 		if not self.lastUpdated or self.lastUpdated + kUpdateAutoOpenRate < Shared.GetTime() then
 			ClientUpdateAutoOpen(self)
-			if Client then
-				self.lastUpdated = Shared.GetTime()
-			end
+			self.lastUpdated = Shared.GetTime()
 		end
 		
 	end
@@ -271,7 +269,7 @@ if not Server then
 end
 
 if Predict then
-	AddClassToPredictionUpdate("Door", function(ent) return true end, kUpdateAutoOpenRate)
+	AddClassToPredictionUpdate("Door", function(ent) return true end)
 end
 
 Shared.LinkClassToMap("Door", Door.kMapName, networkVars)
