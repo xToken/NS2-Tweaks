@@ -58,7 +58,8 @@ local function InfantryPortalUpdate(self)
         
         // Stop spinning if player left server, switched teams, etc.
         if self.timeSpinUpStarted and self.queuedPlayerId == Entity.invalidId then
-            StopSpinning(self)
+			self:TriggerEffects("infantry_portal_stop_spin")
+			self.timeSpinUpStarted = nil
         end
         
     end
